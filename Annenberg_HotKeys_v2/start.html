@@ -1,0 +1,290 @@
+    <script type="text/javascript" src="sim-js/jquery.min.js"></script>
+ <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
+        <script>
+        var video;
+        var timer;
+        var vLength=2.3*60+0; ; 
+        $(document).ready(function() {
+                    video=$("#video1");
+                    timer=$("#timer1");
+                    video.on("click",function (){
+                                        if (this.paused)
+                                            this.play();
+                                        else
+                                            this.pause();
+                                    });
+                    video.on("timeupdate",function()
+                                        {
+
+                                            vTime=this.currentTime.toFixed(0);
+                                            vRemaining=(vLength - vTime);
+                                            sec=vRemaining%60;
+                                            min=(vRemaining-sec)/60;
+                                            vRemaining=min+":"+sec;
+                                            timer.text(vRemaining);
+                                        }); 
+                });
+        </script>   
+<script type="text/javascript">
+    function vidplay() {
+       var video = document.getElementById("video1");
+       var button = document.getElementById("play");
+       if (video.paused) {
+          video.play();
+          button.textContent = "||";
+       } else {
+          video.pause();
+          button.textContent = ">";
+       }
+    }
+
+    function restart() {
+        var video = document.getElementById("video1");
+        video.currentTime = 0;
+    }
+
+    function skip(value) {
+        var video = document.getElementById("video1");
+        video.currentTime += value;
+    }      
+</script>
+<script type="text/css" rel="stylesheet">
+.video-wrapper {
+  position: relative;
+  overflow: hidden;
+  max-width: 480px;
+}
+
+video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+// Video controls
+.video-controls {
+  position: absolute;
+  bottom: -45px; // height of controls container
+  left: 50%;
+  padding: 7px;
+  background: rgba(255, 255, 255, .35);
+  transform: translateX(-50%);
+  transition: bottom .25s ease-in;
+}
+
+.video-wrapper:focus > video + .video-controls,
+.video-wrapper:hover > video + .video-controls {
+  bottom: 12px;
+  z-index: 2;
+}
+
+// Video controls
+.btn {
+  padding: 5px 0;
+  width: 31px;
+  font-size: 18px;
+  text-align: center;
+  color: #fff;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: opacity .175s ease-in;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:hover {
+    opacity: .25;
+  }
+}
+
+// Progress bar
+.progress-bar-fill {
+  width: 0;
+  height: 4px;
+  background-color: #e74c3c;
+  transition: width .35s linear;
+}
+
+</script>
+
+ <body>
+<script type="text/javascript">
+ document.getElementById('video1').addEventListener('ended',function(){
+     window.close();
+ },false);
+</script>
+
+<script type="text/javascript">
+document.onkeyup=function(e){
+	var e = e || window.event; // for IE to cover IEs window object
+    if(e.which == 81) {
+
+
+
+
+if(!$('#iframe').length) {
+                $('#iframeHolder').html('<video id="video1" width="100%" height="100%" autoplay> <source src="sim-files/q.mp4"  type="video/mp4"> </video>');
+                 var somevalue = " Played Video1: Patient arrives, nurse triage: undress baby, breath sounds, pulse, assess cap refill ";
+				 $("#FirstDiv").text(somevalue);
+				 $("#restart").text("[Restart]");
+				 $("#rew").text("<<");
+				 $("#play").text("||");
+
+
+		}
+
+
+    }
+	else if(e.which == 49) {
+        if(!$('#iframe').length) {
+                $('#iframeHolder').html('<video id="video1" width="100%" height="100%" autoplay> <source src="sim-files/1.mp4"  type="video/mp4"> </video>');
+                 var somevalue = " Played Video1: Patient arrives, nurse triage: undress baby, breath sounds, pulse, assess cap refill ";
+				 $("#FirstDiv").text(somevalue);
+				 $("#restart").text("[Restart]");
+				 $("#rew").text("<<");
+				 $("#play").text("||");
+
+
+		}
+    }
+	else if(e.which == 50) {
+        if(!$('#iframe').length) {
+                $('#iframeHolder').html('<video id="video1" width="100%" height="100%" autoplay> <source src="sim-files/2.mp4"" type="video/mp4"> </video>');
+				var somevalue2 = "Played Video 2: Rectal temperature, BP, cardiac leads, SpO2 monitor";
+				 $("#SecondDiv").text(somevalue2);
+				 $("#restart").text("[Restart]");
+				 $("#rew").text("<<");
+				  $("#play").text("||");
+		}
+    }
+
+	else if(e.which == 51) {
+        if(!$('#iframe').length) {
+               $('#iframeHolder').html('<video id="video1" width="100%" height="100%" autoplay> <source src="sim-files/3.mp4" type="video/mp4"> </video>');
+                var somevalue3 = "Played Video 3: Blow by, on monitors";
+				 $("#ThirdDiv").text(somevalue3);
+				 $("#restart").text("[Restart]");
+				 $("#rew").text("<<");
+				  $("#play").text("||");
+		}
+    }
+	else if(e.which == 52) {
+        if(!$('#iframe').length) {
+               $('#iframeHolder').html('<video id="video1" width="100%" height="100%" autoplay> <source src="sim-files/4.mp4" type="video/mp4"> </video>');
+                 var somevalue4 = "Played Video 4: Nasal cannula";
+				 $("#FourthDiv").text(somevalue4); 
+ 				 $("#restart").text("[Restart]");
+				 $("#rew").text("<<");
+				  $("#play").text("||");				 
+	   }
+    }
+else if(e.which == 53) {
+        if(!$('#iframe').length) {
+               $('#iframeHolder').html('<video id="video1" width="100%" height="100%" autoplay> <source src="sim-files/5.mp4" type="video/mp4"> </video>');
+                 var somevalue4 = "Played Video 4b: ---------------";
+				 $("#FourthDiv_b").text(somevalue4); 
+ 				 $("#restart").text("[Restart]");
+				 $("#rew").text("<<");
+				  $("#play").text("||");				 
+	   }
+    }
+    else if(e.which == 54) {
+        if(!$('#iframe').length) {
+               $('#iframeHolder').html('<video id="video1" width="100%" height="100%" autoplay> <source src="sim-files/6.mp4" type="video/mp4"> </video>');
+                 var somevalue4 = "Played Video 4c: ---------------";
+				 $("#FourthDiv_c").text(somevalue4); 
+ 				 $("#restart").text("[Restart]");
+				 $("#rew").text("<<");
+				  $("#play").text("||");				 
+	   }
+    }
+	else if(e.which == 55) {
+        if(!$('#iframe').length) {
+               $('#iframeHolder').html('<video id="video1" width="100%" height="100%" autoplay> <source src="sim-files/7.mp4" type="video/mp4"> </video>');
+                 var somevalue4 = "Played Video 4d: ---------------";
+				 $("#FourthDiv_c").text(somevalue4); 
+ 				 $("#restart").text("[Restart]");
+				 $("#rew").text("<<");
+				  $("#play").text("||");				 
+	   }
+    }
+	else if(e.which == 56) {
+        if(!$('#iframe').length) {
+               $('#iframeHolder').html('<video id="video1" width="100%" height="100%" autoplay> <source src="sim-files/8.mp4" type="video/mp4"> </video>');
+                 var somevalue5 = "Played Video 5: Wall suction mouth, nose";
+				 $("#FifthDiv").text(somevalue5);
+				 $("#restart").text("[Restart]");
+				 $("#rew").text("<<");
+				  $("#play").text("||");
+		}
+    }
+		else if(e.which == 57) {
+        if(!$('#iframe').length) {
+               $('#iframeHolder').html('<video id="video1" width="100%" height="100%" autoplay> <source src="sim-files/9.mp4" type="video/mp4"> </video>');
+                 var somevalue6 = "Played Video 6: Airway reposition: should roll";
+				 $("#SixthDiv").text(somevalue6);
+				 $("#restart").text("[Restart]");
+				$("#rew").text("<<");
+				  $("#play").text("||");
+		}
+    }
+		else if(e.which == 48) {
+        if(!$('#iframe').length) {
+               $('#iframeHolder').html('<video id="video1" width="100%" height="100%" autoplay> <source src="sim-files/0.mp4" type="video/mp4"> </video>');
+                  var somevalue7 = "Played Video 7: Warming: chemical warmer, hat, blankets (no oxygen/bagging)";
+				 $("#SeventhDiv").text(somevalue7);
+				 $("#restart").text("[Restart]");
+				 $("#rew").text("<<");
+				 $("#play").text("||");
+		}
+    }
+		else if(e.which == 45) {
+        if(!$('#iframe').length) {
+               $('#iframeHolder').html('<video id="video1" width="100%" height="100%" autoplay> <source src="sim-files/q.mp4" type="video/mp4"> </video>');
+                  var somevalue8 = "Played Video 8: Intubation, ventilation";
+				 $("#EighthDiv").text(somevalue8);
+				 $("#restart").text("[Restart]");
+				 $("#rew").text("<<");
+				 $("#play").text("||");
+		}
+    }
+	else  {
+        // alert('Keyboard shortcut working!');
+         //return false;
+        }
+}
+</script>
+<div id="buttonbar">
+    <button id="restart" onclick="restart();"></button>
+    <button id="rew" onclick="skip(-10)"></button>
+    <button id="play" onclick="vidplay()"></button>
+    <!--<button id="fastFwd" onclick="skip(10)">&gt;&gt;</button>-->
+	<hr>
+
+</div>  
+
+
+<script type="text/javascript">
+ document.getElementById('video1').addEventListener('ended',function(){
+     window.close();
+ },false);
+</script>
+
+<h3>
+  <div id="iframeHolder"></div>
+ <!--  Pediatric COVID Simulation Project.<br>-->
+
+</h3>
+
+</div>
+  <!-- <p>To start initial video please use "q" key<br></p>
+   <p>After that use keys 1 to 9 to start different videos.<br></p>
+   <p>Below the video text will show which video was watched already.<br></p>
+
+ 
+   <p>--------------------------------------------------------------------------------------<br></p>-->
+   
+   
