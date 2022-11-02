@@ -1,0 +1,8 @@
+.DS_Store
+.DS_Store?
+
+
+# exclude mp4 files
+*.mp4
+
+
