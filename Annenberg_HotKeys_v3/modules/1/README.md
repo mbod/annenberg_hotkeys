@@ -1,5 +1,6 @@
 ### Example module folder
 
-* Valid video files are:
-	1. mp4 files
-	2. named `a.mp4` through `z.mp4`
+* Valid video subfolders are:
+	1. named `a` through `z`
+
+* Each subfolder should contain a valid video file (default: mp4 format)
