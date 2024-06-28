@@ -7,8 +7,6 @@
 
     const modules = [1,2,3,4,5,6,7,8,9];
 
-    
-
     let videoData = {};
     let folderData = {};
 
@@ -18,7 +16,7 @@
     function switchVideo(fnum) {
         let videoElem = document.getElementById("video");
 
-	const vcode = folderData[fnum];
+	const vcode = folderData[currentModuleNum][fnum];
         const mpath = `modules/${currentModuleNum}/${fnum}/${vcode}`;
         if (DEBUG) {
             console.log(videoElem);
@@ -33,7 +31,7 @@
         console.log(currentModuleNum);
 
         let fnum = videoData[mnum][0];
-	let vnum = folderData[fnum];
+	let vnum = folderData[mnum][fnum];
         if (DEBUG) {
             console.log(`Switched to module ${mnum} starting video ${vnum}.mp4`);
         }
@@ -51,12 +49,19 @@
             const directoryHandle = await window.showDirectoryPicker();
             const fileListElement = document.getElementById('file-list');
             await listFiles(directoryHandle, null, null);
+
+
+	    Object.keys(videoData).forEach(function(key) {
+		videoData[key].sort();
+	    });
+	    
 	    if (DEBUG) {
 		console.log(videoData);
 		console.log(folderData);
 	    }
+
+
 	    document.getElementById('body').setAttribute('background',null);
-	    //document.getElementById('hotkeys-logo').style.visibility='hidden';
     	    document.getElementById('hotkeys-logo').style.display='none';
 	} catch (err) {
             console.error('Error accessing directory:', err);
@@ -72,8 +77,8 @@
             if (entry.kind === 'file' && entry.name.endsWith('.mp4')) {
 		if (DEBUG) console.log(`File ${entry.name}`);
 		
-		if (folderData[letter] === undefined) {
-		    folderData[letter] = entry.name;
+		if (folderData[inModule][letter] === undefined) {
+		    folderData[inModule][letter] = entry.name;
 		}
 		
             } else if (entry.kind === 'directory' && inModule) {
@@ -82,14 +87,12 @@
 		await listFiles(entry, inModule, letterFolder);
 	    } else if (entry.kind === 'directory' && entry.name in modules) {
 		if (DEBUG) console.log(`Directory ${entry.name}`);
-		videoData[entry.name]=[];
 		const currentModule = entry.name;
-		//li.textContent = `Directory: ${entry.name}`;
-		//const ul = document.createElement('ul');
-		//li.appendChild(ul);
+		videoData[currentModule]=[];
+		folderData[currentModule]={};
 		await listFiles(entry, currentModule, null);
             }
-            //fileListElement.appendChild(li);
+
 	}
     }
 
