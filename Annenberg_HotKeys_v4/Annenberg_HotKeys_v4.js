@@ -54,7 +54,7 @@
 	if (!MODULE_AUTOSTART) {
             const videoElem = document.getElementById("video");
 	    videoElem.src="";
-	    const folderList = folderData[currentModuleNum].join(', ');
+	    const folderList = Object.keys(folderData[currentModuleNum]).join(', ');
 	    const moduleDialog = document.getElementById('message_dialog');
 	    document.getElementById('available_folders').innerText = folderList;
     	    //document.getElementById('module_message').style.visibility='hidden';
