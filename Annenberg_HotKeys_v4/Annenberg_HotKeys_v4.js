@@ -13,7 +13,12 @@
     function switchVideo(fnum) {
         const videoElem = document.getElementById("video");
         const vcode = folderData[currentModuleNum][fnum];
-        const mpath = `modules/${currentModuleNum}/${fnum}/${vcode}`;
+
+	/*
+	  TODO: get absolute local path from DirectoryPicker process
+	        to allow for modules folder outside of the hotkeys folder
+	*/
+	const mpath = `modules/${currentModuleNum}/${fnum}/${vcode}`;
         
         if (DEBUG) {
             console.log(videoElem);
