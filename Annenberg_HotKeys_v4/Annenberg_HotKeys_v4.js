@@ -2,7 +2,7 @@
     const DEBUG = true;
     const MODULE_AUTOSTART = false;
     
-    const modules = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const modules = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
     let videoData = {};
     let folderData = {};
@@ -54,7 +54,7 @@
 	if (!MODULE_AUTOSTART) {
             const videoElem = document.getElementById("video");
 	    videoElem.src="";
-	    const folderList = videoData[currentModuleNum].join(', ');
+	    const folderList = folderData[currentModuleNum].join(', ');
 	    const moduleDialog = document.getElementById('message_dialog');
 	    document.getElementById('available_folders').innerText = folderList;
     	    //document.getElementById('module_message').style.visibility='hidden';
@@ -147,6 +147,8 @@
 
         console.log(`Keypress: ${keyVal} (${keyCode})`);
 
+	console.log(videoData.hasOwnProperty(keyVal));
+	
         // Switch to a module if a valid module number is pressed
         if (videoData.hasOwnProperty(keyVal) && currentModuleNum != keyVal) {
             switchModule(keyVal);
