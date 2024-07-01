@@ -1,5 +1,7 @@
 (async function () {
     const DEBUG = true;
+    const MODULE_AUTOSTART = true;
+    
     const modules = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
     let videoData = {};
@@ -45,6 +47,10 @@
 	    console.log(currentModuleNum);
 	}
 
+	if (!MODULE_AUTOSTART) {
+	    return;
+	}
+	    
         const fnum = videoData[mnum][0];
         const vnum = folderData[mnum][fnum];
         
