@@ -58,6 +58,21 @@
 		font-weight: bold;
 	    }
 
+	    #message_dialog {
+		background-color: #a4dbeb;
+		color: #000099;
+		display: none;
+		padding: 10pt;
+		font-weight: bold;
+	    }
+
+	    #module_message {
+		visibility: display;
+	    }
+
+	    #folder_message {
+		visibility: hidden;
+	    }
 	    
         </style>
     </head>
@@ -86,14 +101,20 @@
        </div>
 
      </div>
+
      
-        <div>
-            <video id="video" autoplay>
+     
+     <div>
+       <div id="message_dialog">
+	 <div id="module_message">You have videos in modules: <span id="available_modules"></span></div>
+	 <div id="folder_message">Select a video folder: <span id="available_folders"></span></div>
+       </div>
+       <video id="video" autoplay>
+	 
+       </video>
+     </div>
 
-            </video>
-        </div>
-
-        <script type="text/javascript" src="Annenberg_HotKeys_v4.js"></script>
+     <script type="text/javascript" src="Annenberg_HotKeys_v4.js"></script>
 
 
     </body>

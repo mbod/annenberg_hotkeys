@@ -1,6 +1,6 @@
 (async function () {
     const DEBUG = true;
-    const MODULE_AUTOSTART = true;
+    const MODULE_AUTOSTART = false;
     
     const modules = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -16,6 +16,10 @@
         const videoElem = document.getElementById("video");
         const vcode = folderData[currentModuleNum][fnum];
 
+
+	// hide message dialog
+	document.getElementById('message_dialog').style.display="none";
+	
 	/*
 	  TODO: get absolute local path from DirectoryPicker process
 	        to allow for modules folder outside of the hotkeys folder
@@ -48,6 +52,14 @@
 	}
 
 	if (!MODULE_AUTOSTART) {
+            const videoElem = document.getElementById("video");
+	    videoElem.src="";
+	    const folderList = videoData[currentModuleNum].join(', ');
+	    const moduleDialog = document.getElementById('message_dialog');
+	    document.getElementById('available_folders').innerText = folderList;
+    	    //document.getElementById('module_message').style.visibility='hidden';
+	    document.getElementById('folder_message').style.visibility='visible';
+	    moduleDialog.style.display="block";
 	    return;
 	}
 	    
@@ -80,8 +92,17 @@
                 console.log(folderData);
             }
 
+	    // clear splash screen and list available modules
             document.getElementById('body').setAttribute('background', null);
             document.getElementById('hotkeys-logo').style.display = 'none';
+
+	    const moduleList = Object.keys(videoData).join(', ');
+	    const moduleDialog = document.getElementById('message_dialog');
+	    document.getElementById('available_modules').innerText = moduleList;
+	    moduleDialog.style.display="block";
+
+
+	    
         } catch (err) {
             console.error('Error accessing directory:', err);
         }
@@ -104,6 +125,7 @@
                     folderData[inModule][letter] = entry.name;
                 }
             } else if (entry.kind === 'directory') {
+
                 if (inModule) {
                     const letterFolder = entry.name;
                     videoData[inModule].push(letterFolder);
