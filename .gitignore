@@ -5,4 +5,6 @@
 # exclude mp4 files
 *.mp4
 
+*.*~
+.markdown-preview.html
 
