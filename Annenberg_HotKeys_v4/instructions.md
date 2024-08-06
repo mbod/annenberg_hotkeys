@@ -1,6 +1,6 @@
 # Annenberg Hotkeys 4.0 Instructions 
 
- 
+* [Video Instructions](https://www.youtube.com/watch?v=bPHXGnH6J3Y) 
 
 ## Introduction 
 
