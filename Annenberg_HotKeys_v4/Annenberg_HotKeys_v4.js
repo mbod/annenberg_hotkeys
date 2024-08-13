@@ -13,8 +13,8 @@
     // Show version number
 
 
-    document.addEventListener("load", () => {
-	document.getElementById("#version-number").innerText = VERSION;
+    window.addEventListener("load", () => {
+	document.getElementById("version-number").innerText = VERSION;
     });
 
 
