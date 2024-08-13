@@ -10,9 +10,8 @@
     let folderData = {};
     let currentModuleNum = null;
 
+
     // Show version number
-
-
     window.addEventListener("load", () => {
 	document.getElementById("version-number").innerText = VERSION;
     });
@@ -32,11 +31,16 @@
 	document.getElementById('message_dialog').style.display="none";
 	
 	/*
-	  TODO: get absolute local path from DirectoryPicker process
-	        to allow for modules folder outside of the hotkeys folder
+	  DONE: Version 4.1
+	  Not possible to get absolute local path from DirectoryPicker process
+	  to allow for modules folder outside of the hotkeys folder
+	  create a blob of video during DirectoryPicker process and
 	*/
-	//const mpath = `modules/${currentModuleNum}/${fnum}/${vcode}`;
+
+	// v4.0 path relative to script folder 
+	//const mpath = `modules/${currentModuleNum}/${fnum}/${vcode}`;   
         const mpath = `${vcode}`;
+	
         if (DEBUG) {
             console.log(videoElem);
             console.log(`Switch video to: ${mpath}`);
@@ -139,13 +143,15 @@
                 if (DEBUG) {
 		    console.log(`File ${entry.name}`);
 		    const file = await entry.getFile();
-		    console.log(file);
 		    const fileURL = URL.createObjectURL(file);
-		    console.log('PATH?' + fileURL);
+		    console.log('Encoded video: ' + fileURL);
 		}
 
                 if (!folderData[inModule][letter]) {
-                    folderData[inModule][letter] = entry.name;
+		    // from v4.1 store blob of video files in data structure to
+		    // to allow module folders in any location relative to HK script
+		    
+                    // folderData[inModule][letter] = entry.name;
 		    folderData[inModule][letter] = URL.createObjectURL(await entry.getFile());
                 }
             } else if (entry.kind === 'directory') {
