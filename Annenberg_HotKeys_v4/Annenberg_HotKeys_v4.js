@@ -54,10 +54,9 @@
 	if (!MODULE_AUTOSTART) {
             const videoElem = document.getElementById("video");
 	    videoElem.src="";
-	    const folderList = Object.keys(folderData[currentModuleNum]).sort().join(', ');
+	    const folderList = Object.keys(folderData[currentModuleNum]).join(', ');
 	    const moduleDialog = document.getElementById('message_dialog');
 	    document.getElementById('available_folders').innerText = folderList;
-    	    //document.getElementById('module_message').style.visibility='hidden';
 	    document.getElementById('folder_message').style.visibility='visible';
 	    moduleDialog.style.display="block";
 	    return;
@@ -93,10 +92,10 @@
             }
 
 	    // clear splash screen and list available modules
-            document.getElementById('body').setAttribute('background', null);
+	    document.body.style.background = 'none';
             document.getElementById('hotkeys-logo').style.display = 'none';
 
-	    const moduleList = Object.keys(videoData).join(', ');
+	    const moduleList = Object.keys(videoData).sort().join(', ');
 	    const moduleDialog = document.getElementById('message_dialog');
 	    document.getElementById('available_modules').innerText = moduleList;
 	    moduleDialog.style.display="block";
