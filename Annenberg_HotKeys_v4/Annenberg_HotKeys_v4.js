@@ -24,8 +24,8 @@
 	  TODO: get absolute local path from DirectoryPicker process
 	        to allow for modules folder outside of the hotkeys folder
 	*/
-	const mpath = `modules/${currentModuleNum}/${fnum}/${vcode}`;
-        
+	//const mpath = `modules/${currentModuleNum}/${fnum}/${vcode}`;
+        const mpath = `${vcode}`;
         if (DEBUG) {
             console.log(videoElem);
             console.log(`Switch video to: ${mpath}`);
@@ -84,9 +84,7 @@
 	    
             const directoryHandle = await window.showDirectoryPicker(options);
 
-	    if (DEBUG) {
-		console.log(directoryHandle);
-	    }
+
 	    
             await listFiles(directoryHandle, null, null);
 
@@ -127,10 +125,17 @@
             if (DEBUG) console.log(entry);
 
             if (entry.kind === 'file' && entry.name.endsWith('.mp4')) {
-                if (DEBUG) console.log(`File ${entry.name}`);
+                if (DEBUG) {
+		    console.log(`File ${entry.name}`);
+		    const file = await entry.getFile();
+		    console.log(file);
+		    const fileURL = URL.createObjectURL(file);
+		    console.log('PATH?' + fileURL);
+		}
 
                 if (!folderData[inModule][letter]) {
                     folderData[inModule][letter] = entry.name;
+		    folderData[inModule][letter] = URL.createObjectURL(await entry.getFile());
                 }
             } else if (entry.kind === 'directory') {
 
