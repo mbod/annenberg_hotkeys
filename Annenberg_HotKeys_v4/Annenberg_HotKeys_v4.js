@@ -1,6 +1,8 @@
 (async function () {
     const DEBUG = true;
     const MODULE_AUTOSTART = false;
+    const VERSION = "4.1";
+
     
     const modules = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
@@ -8,6 +10,15 @@
     let folderData = {};
     let currentModuleNum = null;
 
+    // Show version number
+
+
+    document.addEventListener("load", () => {
+	document.getElementById("#version-number").innerText = VERSION;
+    });
+
+
+    
     /**
      * Switches the video source based on the folder number.
      * @param {string} fnum - Folder number.

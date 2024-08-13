@@ -73,6 +73,10 @@
 	    #folder_message {
 		visibility: hidden;
 	    }
+
+	    .smaller {
+		font-size: 0.7em;
+	    }
 	    
         </style>
     </head>
@@ -84,9 +88,15 @@
           src="hotkeys-logo-800.jpg" alt="Hotkeys Logo - Click to Start"
                height="462" width="1101" border="0" />
        </div>
+
        <div class="center instructions">
-	 Click to browse to your modules folder to enable permissions
+	 <div>Click to browse to your modules folder to enable permissions</div>
+	 <p/>
+ 	 <div class="smaller">This is version <span id="version-number"></span></div>
+
        </div>
+
+	 
        <div class="center">
 
 	 <span class="disclaimer">Boilerplate disclaimer.
@@ -125,6 +135,8 @@
 	   localScript.src = 'Annenberg_HotKeys_v4.js';
 	   document.head.appendChild(localScript);
        }
+
+       
      </script>
 
     </body>
