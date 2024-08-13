@@ -78,7 +78,11 @@
     // TODO: can this be made to work in Firefox? Use of polyfill
     document.getElementById('hotkeys-logo').addEventListener('click', async () => {
         try {
-            const directoryHandle = await window.showDirectoryPicker();
+	    const options = {
+		startIn: 'desktop'
+	    };
+	    
+            const directoryHandle = await window.showDirectoryPicker(options);
             await listFiles(directoryHandle, null, null);
 
             // Sort video data
