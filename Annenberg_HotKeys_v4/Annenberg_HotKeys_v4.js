@@ -83,6 +83,11 @@
 	    };
 	    
             const directoryHandle = await window.showDirectoryPicker(options);
+
+	    if (DEBUG) {
+		console.log(directoryHandle);
+	    }
+	    
             await listFiles(directoryHandle, null, null);
 
             // Sort video data
