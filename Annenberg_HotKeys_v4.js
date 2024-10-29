@@ -115,7 +115,7 @@
 
 	    // clear splash screen and list available modules
 	    document.body.style.background = 'none';
-            document.getElementById('hotkeys-logo').style.display = 'none';
+            document.getElementById('background-info').style.display = 'none';
 
 	    const moduleList = Object.keys(videoData).sort().join(', ');
 	    const moduleDialog = document.getElementById('message_dialog');
@@ -126,6 +126,30 @@
 	    
         } catch (err) {
             console.error('Error accessing directory:', err);
+        }
+    });
+    // Add a new button ID hotkeys-s3 to reference a local directory
+    document.getElementById('hotkeys-s3').addEventListener('click', async () => {
+        try {
+            const response = await fetch('./modules/aws-demo/1/a/'); // Fetch the specific local directory
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            //console.log(response);
+            const text = await response.text();
+            // Assuming the response contains HTML, parse it to find files
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
+            const files = Array.from(doc.querySelectorAll('a'))
+                .map(link => link.href);
+
+            // Call listFiles with the files array
+            await listFiles(files, null, null);
+
+            // not sure what is next....
+
+        } catch (err) {
+            console.error('Error accessing S3 directory:', err);
         }
     });
 

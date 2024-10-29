@@ -1,55 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Annenberg Hotkeys</title>
-        <link rel="stylesheet" type="text/css" href="styles.css">
-        <script src="loadScripts.js"></script>
-    </head>
-   <body id="body" background="img/bg.jpg">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annenberg Hotkeys</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="loadScripts.js"></script>
+  </head>
 
-     <div id="hotkeys-logo">
-       <div class="center">
-          <img moz-do-not-send="true"
-          src="img/hotkeys-logo-800.jpg" alt="Hotkeys Logo - Click to Start"
-               height="462" width="1101" border="0" />
-       </div>
+  <body id="body" background="img/bg.jpg">
 
-       <div class="center instructions">
-	 <div>Click to browse to your modules folder to enable permissions</div>
-	 <br>
- 	 <div class="smaller">This is version <span id="version-number"></span></div>
+    <div id="background-info">
+      <div class="center instructions">
+        <img moz-do-not-send="true"
+        src="img/hotkeys-logo-800.jpg" alt="Hotkeys Logo - Click to Start" height="250px" border="0" />
+      </div>
+      <div class="center instructions">
+        <h1>AWS S3 Hosted Demo</h1>
+        <div>
+          Click here to load your ./modules folder to enable browser permissions
+          <br>
+          <button id="hotkeys-logo">Browse</button>
+          <br><br>
+          Alternatively, if running assets on AWS S3 bucket, click here to load
+          <br>
+          <button id="hotkeys-s3">Load S3</button>
+        </div>
+        <br>
+        <div class="smaller">This is version <span id="version-number"></span></div>
+      </div>
+      <div class="center instructions">
+        <span class="disclaimer">Boilerplate disclaimer.
+            This simulation is for general informational purposes only.
+            This information should not <br/>
+            be used for diagnosis,&nbsp; nor should it be considered a
+            replacement for consultation with a health care professional.
+            <br/>
+            If you have questions or concerns about your health, please
+            contact your health care provider.
+        </span>
 
-       </div>
-
-	 
-       <div class="center">
-
-	 <span class="disclaimer">Boilerplate disclaimer.
-          This simulation is for general informational purposes only.
-          This information should not <br/>
-          be used for diagnosis,&nbsp; nor should it be considered a
-          replacement for consultation with a health care professional.
-          <br/>
-          If you have questions or concerns about your health, please
-          contact your health care provider.</span>
-
-       </div>
-
-     </div>
-
-     
-     
-     <div>
-       <div id="message_dialog">
-	 <div id="module_message">You have videos in modules: <span id="available_modules"></span></div>
-	 <div id="folder_message">Select a video folder: <span id="available_folders"></span></div>
-       </div>
-       <video id="video" autoplay>
-	 
-       </video>
-     </div>
-    </body>
+      </div>
+    </div>
+    
+    <div>
+      <div id="message_dialog">
+        <div id="module_message">You have videos in modules: <span id="available_modules"></span></div>
+        <div id="folder_message">Select a video folder: <span id="available_folders"></span></div>
+      </div>
+      <video id="video" autoplay>
+      </video>
+    </div>
+  </body>
 
 </html>
