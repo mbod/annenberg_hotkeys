@@ -14,7 +14,6 @@ echo -e "-------------------------------------------------"
 echo -e ""
 sleep 1
 
-# Check if region and profile are provided as arguments
 if [ -z "$1" ]; then
   echo "Enter the region:"
   read region
@@ -53,7 +52,6 @@ fi
 echo -e "-------------------------------------------------"
 sleep 1
 
-# Check that the named profile is valid with an sts call and print a message
 echo -e "\nChecking that the named profile is valid...\n"
 if aws sts get-caller-identity --profile $profile > /dev/null
 then
@@ -64,7 +62,6 @@ else
 fi
 sleep 1
 
-# Check that the bucket exists and print a message
 echo -e "\nChecking that the bucket exists...\n"
 if aws s3api head-bucket --bucket $bucket --region $region --profile $profile
 then
@@ -75,7 +72,6 @@ else
 fi
 
 sleep 1
-# check that bucket key exists
 echo -e "\nChecking that the bucket key exists...\n"
 if [[ $(aws s3 ls s3://$bucket/$bucket_key/ --region $region --profile $profile | head) ]];
 then
@@ -91,12 +87,6 @@ sleep 1
 
 echo -e "Fetching a list of video files in the bucket and bucket key..."
 sleep 1
-# Fetch a list of video files in the bucket and bucket key
-aws s3 ls s3://$bucket/$bucket_key/ --region $region --profile $profile > /dev/null
-
-# okay so I want to take all those video files, and pipe to a URL that is public
-# format should be https://$BUCKET/$BUCKET_KEY/$VIDEO_FILE
-# I want to take the output of the above command and pipe it to a file
 
 aws s3 ls s3://$bucket/$bucket_key/ --region $region --profile $profile | awk -v bucket="$bucket" -v bucket_key="$bucket_key" '{print "https://" bucket "/" bucket_key "/" $4}' > video_files.txt
 
