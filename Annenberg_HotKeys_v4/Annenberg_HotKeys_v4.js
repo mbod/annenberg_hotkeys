@@ -1,8 +1,8 @@
 (async function () {
     const DEBUG = true;
     const MODULE_AUTOSTART = false;
-    const VERSION = "4.1";
-
+    const VERSION = "4.2";
+    const SHOW_MODULE_LIST = false;
     
     const modules = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
@@ -34,7 +34,7 @@
 	  DONE: Version 4.1
 	  Not possible to get absolute local path from DirectoryPicker process
 	  to allow for modules folder outside of the hotkeys folder
-	  create a blob of video during DirectoryPicker process and
+	  create a blob of video during DirectoryPicker process and cache
 	*/
 
 	// v4.0 path relative to script folder 
@@ -70,10 +70,13 @@
             const videoElem = document.getElementById("video");
 	    videoElem.src="";
 	    const folderList = Object.keys(folderData[currentModuleNum]).sort().join(', ');
-	    const moduleDialog = document.getElementById('message_dialog');
-	    document.getElementById('available_folders').innerText = folderList;
-	    document.getElementById('folder_message').style.visibility='visible';
-	    moduleDialog.style.display="block";
+
+	    if (SHOW_MODULE_LIST) {
+		const moduleDialog = document.getElementById('message_dialog');
+		document.getElementById('available_folders').innerText = folderList;
+		document.getElementById('folder_message').style.visibility='visible';
+		moduleDialog.style.display="block";
+	    }
 	    return;
 	}
 	    
@@ -118,9 +121,13 @@
             document.getElementById('hotkeys-logo').style.display = 'none';
 
 	    const moduleList = Object.keys(videoData).sort().join(', ');
-	    const moduleDialog = document.getElementById('message_dialog');
-	    document.getElementById('available_modules').innerText = moduleList;
-	    moduleDialog.style.display="block";
+
+
+	    if (SHOW_MODULE_LIST) {
+		const moduleDialog = document.getElementById('message_dialog');
+		document.getElementById('available_modules').innerText = moduleList;
+		moduleDialog.style.display="block";
+	    }
 
 
 	    
